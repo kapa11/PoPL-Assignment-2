@@ -6,3 +6,7 @@
         acc
         (loop (cdr rem) (+ acc 1)))))
 
+(define (my-map f lst)
+  (if (null? lst)
+      '()
+      (cons (f (car lst)) (my-map f (cdr lst)))))
