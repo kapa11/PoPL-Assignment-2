@@ -99,6 +99,14 @@ valid_equation(List, EquationString) :-
     equation_tree(List, EquationTree),
     format_equation(EquationTree, EquationString).
 
+% P2.a
+% generate_equation(List, Equation)
+% Unifies Equation with one valid equation for List.
+% Fails if no valid equation exists, including lists of length 0 or 1.
+generate_equation(List, Equation) :-
+    once(valid_equation(List, Equation)).
+
+
 
 
 
