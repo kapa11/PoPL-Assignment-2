@@ -63,6 +63,24 @@ needs_parentheses(ChildOp, ParentOp, right) :-
     operator_precedence(ParentOp, ParentPrec),
     ChildPrec =< ParentPrec.
 
+% format_expression_context(Tree, ParentOp, Side, String)
+% Formats an expression Tree into an SWI-Prolog string, adding parentheses
+% only when dictated by ParentOp and Side (left/right/root).
+format_expression_context(num(N), _ParentOp, _Side, String) :-
+    number_string(N, String).
+format_expression_context(node(Op, Left, Right), ParentOp, Side, String) :-
+    format_expression_context(Left, Op, left, LStr),
+    format_expression_context(Right, Op, right, RStr),
+    atom_string(Op, OpStr),
+    string_concat(LStr, OpStr, Temp),
+    string_concat(Temp, RStr, Inner),
+    (   needs_parentheses(Op, ParentOp, Side)
+    ->  string_concat("(", Inner, Temp2),
+        string_concat(Temp2, ")", String)
+    ;   String = Inner
+    ).
+
+
 
 
 
