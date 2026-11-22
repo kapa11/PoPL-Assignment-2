@@ -44,3 +44,8 @@ clue(8, Solution) :-
     member(p(_, research, Lang, data), Solution),
     Lang \= javascript.
 
+active_clues_hold([], _).
+active_clues_hold([N | Rest], Solution) :-
+    clue(N, Solution),
+    active_clues_hold(Rest, Solution).
+
