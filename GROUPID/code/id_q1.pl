@@ -68,3 +68,11 @@ print_solution([]).
 print_solution([p(Name, Dept, Lang, Project) | Rest]) :-
     format('~w = [~w, ~w, ~w]~n', [Name, Dept, Lang, Project]),
     print_solution(Rest).
+
+main :-
+    once((
+        candidate_solution(Solution),
+        active_clues_hold([1,2,3,4,5,6,7,8,9], Solution)
+    )),
+    print_solution(Solution).
+
