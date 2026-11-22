@@ -44,5 +44,14 @@ equation_tree(List, eq(LeftTree, RightTree)) :-
     expression_tree(RightList, RightTree),
     eval_expression(RightTree, Val).
 
+% operator_precedence(Operator, Precedence)
+% Defines numeric precedence for permitted binary operators.
+% Higher value means tighter binding.
+operator_precedence(+, 1).
+operator_precedence(-, 1).
+operator_precedence(*, 2).
+operator_precedence(/, 2).
+
+
 
 
