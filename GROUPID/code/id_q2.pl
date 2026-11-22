@@ -35,4 +35,14 @@ eval_expression(node(/, Left, Right), Value) :-
     LVal rem RVal =:= 0,
     Value is LVal // RVal.
 
+% equation_tree(List, EquationTree)
+% Generates valid equation trees eq(LeftTree, RightTree) where both sides evaluate to the same integer.
+equation_tree(List, eq(LeftTree, RightTree)) :-
+    split_nonempty(List, LeftList, RightList),
+    expression_tree(LeftList, LeftTree),
+    eval_expression(LeftTree, Val),
+    expression_tree(RightList, RightTree),
+    eval_expression(RightTree, Val).
+
+
 
