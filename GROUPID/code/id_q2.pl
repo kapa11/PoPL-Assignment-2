@@ -13,3 +13,26 @@ expression_tree(List, node(Op, LeftTree, RightTree)) :-
     expression_tree(RightList, RightTree),
     member(Op, [+, -, *, /]).
 
+% eval_expression(Tree, Value)
+% Evaluates Tree to its integer Value. Fails if division is non-exact or by zero.
+eval_expression(num(N), N).
+eval_expression(node(+, Left, Right), Value) :-
+    eval_expression(Left, LVal),
+    eval_expression(Right, RVal),
+    Value is LVal + RVal.
+eval_expression(node(-, Left, Right), Value) :-
+    eval_expression(Left, LVal),
+    eval_expression(Right, RVal),
+    Value is LVal - RVal.
+eval_expression(node(*, Left, Right), Value) :-
+    eval_expression(Left, LVal),
+    eval_expression(Right, RVal),
+    Value is LVal * RVal.
+eval_expression(node(/, Left, Right), Value) :-
+    eval_expression(Left, LVal),
+    eval_expression(Right, RVal),
+    RVal =\= 0,
+    LVal rem RVal =:= 0,
+    Value is LVal // RVal.
+
+
