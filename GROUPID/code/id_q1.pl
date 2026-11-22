@@ -49,3 +49,14 @@ active_clues_hold([N | Rest], Solution) :-
     clue(N, Solution),
     active_clues_hold(Rest, Solution).
 
+count_solutions(Active, N) :-
+    findall(
+        Solution,
+        (   candidate_solution(Solution),
+            active_clues_hold(Active, Solution)
+        ),
+        Solutions
+    ),
+    sort(Solutions, UniqueSolutions),
+    length(UniqueSolutions, N).
+
