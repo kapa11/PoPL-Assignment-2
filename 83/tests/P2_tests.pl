@@ -1,12 +1,12 @@
 % Test suite for Problem 2: Form a Valid Arithmetic Equation
 % Tests all public and internal predicates according to specification.
 
-:- (   exists_file('../code/id_q2.pl')
-   ->  [ '../code/id_q2.pl' ]
-   ;   exists_file('code/id_q2.pl')
-   ->  [ 'code/id_q2.pl' ]
-   ;   exists_file('GROUPID/code/id_q2.pl')
-   ->  [ 'GROUPID/code/id_q2.pl' ]
+:- (   exists_file('../code/83_q2.pl')
+   ->  [ '../code/83_q2.pl' ]
+   ;   exists_file('code/83_q2.pl')
+   ->  [ 'code/83_q2.pl' ]
+   ;   exists_file('83/code/83_q2.pl')
+   ->  [ '83/code/83_q2.pl' ]
    ).
 
 % =============================================================================
