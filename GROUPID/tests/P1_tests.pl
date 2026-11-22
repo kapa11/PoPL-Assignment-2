@@ -9,7 +9,8 @@ run_p1_tests :-
 
 run_tests([], Passed, Passed, Failed, Failed).
 run_tests([test(Name, Goal) | Rest], P0, P, F0, F) :-
-    (   call(Goal)
+    copy_term(Goal, FreshGoal),
+    (   call(FreshGoal)
     ->  format('[PASS] ~w~n', [Name]),
         P1 is P0 + 1,
         F1 = F0
