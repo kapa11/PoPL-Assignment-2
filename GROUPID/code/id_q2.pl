@@ -52,6 +52,18 @@ operator_precedence(-, 1).
 operator_precedence(*, 2).
 operator_precedence(/, 2).
 
+% needs_parentheses(ChildOp, ParentOp, Side)
+% Determines if ChildOp requires parentheses under ParentOp when positioned at Side (left/right).
+needs_parentheses(ChildOp, ParentOp, left) :-
+    operator_precedence(ChildOp, ChildPrec),
+    operator_precedence(ParentOp, ParentPrec),
+    ChildPrec < ParentPrec.
+needs_parentheses(ChildOp, ParentOp, right) :-
+    operator_precedence(ChildOp, ChildPrec),
+    operator_precedence(ParentOp, ParentPrec),
+    ChildPrec =< ParentPrec.
+
+
 
 
 
