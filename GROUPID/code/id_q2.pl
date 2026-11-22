@@ -93,6 +93,13 @@ format_equation(eq(LeftTree, RightTree), EquationString) :-
     string_concat(LeftStr, "=", Temp),
     string_concat(Temp, RightStr, EquationString).
 
+% valid_equation(List, EquationString)
+% Enumerates canonical equation strings for List via backtracking.
+valid_equation(List, EquationString) :-
+    equation_tree(List, EquationTree),
+    format_equation(EquationTree, EquationString).
+
+
 
 
 
