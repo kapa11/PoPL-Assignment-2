@@ -114,6 +114,13 @@ all_equations(List, Equations) :-
     findall(Eq, valid_equation(List, Eq), RawEquations),
     sort(RawEquations, Equations).
 
+% count_equations(List, N)
+% Unifies N with the number of distinct valid equations for List.
+count_equations(List, N) :-
+    all_equations(List, Equations),
+    length(Equations, N).
+
+
 
 
 
