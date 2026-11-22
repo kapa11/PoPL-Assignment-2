@@ -47,7 +47,7 @@ clue(8, Solution) :-
 % CLUE 9: The friend whose favorite language is Python prefers the AI project.
 clue(9, Solution) :-
     member(p(_, _, python, 'AI'), Solution).
-    
+
 active_clues_hold([], _).
 active_clues_hold([N | Rest], Solution) :-
     clue(N, Solution),
@@ -64,3 +64,7 @@ count_solutions(Active, N) :-
     sort(Solutions, UniqueSolutions),
     length(UniqueSolutions, N).
 
+print_solution([]).
+print_solution([p(Name, Dept, Lang, Project) | Rest]) :-
+    format('~w = [~w, ~w, ~w]~n', [Name, Dept, Lang, Project]),
+    print_solution(Rest).
