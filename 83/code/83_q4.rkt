@@ -25,7 +25,8 @@
                     mapped)))])
     process-list))
 
-(display
- ((make-inserter 42 (lambda (n) (< n 3)))
-  '((1 2) (3 4 5) (6) ())))
+(define (insert-if-short x lst n)
+  ((make-inserter x (lambda (len) (< len n))) lst))
+
+(display (insert-if-short 42 '((1 2) (3 4 5) (6) ()) 3))
 (newline)
