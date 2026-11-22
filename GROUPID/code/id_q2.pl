@@ -80,6 +80,12 @@ format_expression_context(node(Op, Left, Right), ParentOp, Side, String) :-
     ;   String = Inner
     ).
 
+% format_expression(Tree, String)
+% Formats an expression Tree as a canonical SWI-Prolog string without outer parentheses.
+format_expression(Tree, String) :-
+    format_expression_context(Tree, none, root, String).
+
+
 
 
 
