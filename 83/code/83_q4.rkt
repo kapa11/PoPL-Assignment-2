@@ -28,5 +28,9 @@
 (define (insert-if-short x lst n)
   ((make-inserter x (lambda (len) (< len n))) lst))
 
-(display (insert-if-short 42 '((1 2) (3 4 5) (6) ()) 3))
-(newline)
+(define (print-insert-result)
+  (let* ([x (read)]
+         [lst (read)]
+         [n (read)])
+    (display (insert-if-short x lst n))
+    (newline)))
