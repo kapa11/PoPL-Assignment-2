@@ -1,7 +1,9 @@
 % Test suite for Problem 2: Form a Valid Arithmetic Equation
 % Tests all public and internal predicates according to specification.
 
-:- (   exists_file('../code/83_q2.pl')
+:- (   current_predicate(generate_equation/2)
+   ->  true
+   ;   exists_file('../code/83_q2.pl')
    ->  [ '../code/83_q2.pl' ]
    ;   exists_file('code/83_q2.pl')
    ->  [ 'code/83_q2.pl' ]
@@ -97,8 +99,11 @@ test_case('C2: Non-exact division rejected cleanly', (
 )).
 
 test_case('C3: Division by zero rejected cleanly without exception', (
-    all_equations([4, 0, 0], []),
-    \+ generate_equation([4, 0, 0], _)
+    \+ eval_expression(node(/, num(4), num(0)), _),
+    all_equations([4, 0, 0], Es),
+    \+ member("4/0=0", Es),
+    all_equations([1, 0, 5], []),
+    \+ generate_equation([1, 0, 5], _)
 )).
 
 test_case('C4: Nested division by zero rejected without exception', (
