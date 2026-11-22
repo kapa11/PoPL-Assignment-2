@@ -9,3 +9,8 @@ candidate_solution([
     permutation([research, development, design, testing], [D1, D2, D3, D4]),
     permutation([python, java, 'c++', javascript], [L1, L2, L3, L4]),
     permutation(['AI', web, embedded, data], [P1, P2, P3, P4]).
+
+clue(1, Solution) :-
+    member(p(Name, Dept, _, 'AI'), Solution),
+    Dept \= research,
+    Name \= 'Dana'.
