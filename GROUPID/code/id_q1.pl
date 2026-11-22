@@ -44,6 +44,10 @@ clue(8, Solution) :-
     member(p(_, research, Lang, data), Solution),
     Lang \= javascript.
 
+% CLUE 9: The friend whose favorite language is Python prefers the AI project.
+clue(9, Solution) :-
+    member(p(_, _, python, 'AI'), Solution).
+    
 active_clues_hold([], _).
 active_clues_hold([N | Rest], Solution) :-
     clue(N, Solution),
