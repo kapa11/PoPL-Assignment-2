@@ -106,6 +106,15 @@ valid_equation(List, EquationString) :-
 generate_equation(List, Equation) :-
     once(valid_equation(List, Equation)).
 
+% P2.b
+% all_equations(List, Equations)
+% Unifies Equations with the list of all valid equations, without duplicates,
+% sorted by sort/2 in standard order of terms. If none, Equations = [].
+all_equations(List, Equations) :-
+    findall(Eq, valid_equation(List, Eq), RawEquations),
+    sort(RawEquations, Equations).
+
+
 
 
 
