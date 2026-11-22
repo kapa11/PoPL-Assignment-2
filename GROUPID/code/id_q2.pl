@@ -85,6 +85,15 @@ format_expression_context(node(Op, Left, Right), ParentOp, Side, String) :-
 format_expression(Tree, String) :-
     format_expression_context(Tree, none, root, String).
 
+% format_equation(EquationTree, EquationString)
+% Formats eq(LeftTree, RightTree) into a canonical SWI-Prolog string "L=R".
+format_equation(eq(LeftTree, RightTree), EquationString) :-
+    format_expression(LeftTree, LeftStr),
+    format_expression(RightTree, RightStr),
+    string_concat(LeftStr, "=", Temp),
+    string_concat(Temp, RightStr, EquationString).
+
+
 
 
 
